@@ -1,31 +1,25 @@
-# claude-skills
+# shopping-lookbook
 
-Version-tracked [Claude Code](https://claude.com/claude-code) skills.
+A [Claude Code](https://claude.com/claude-code) skill. Curate real, in-stock products into a themed
+visual **"lookbook"** web page: browse live listings, verify each one, and ship a self-contained
+GitHub Pages site with prices, specs, and buy buttons. Use it to turn a vibe — or a pile of
+Etsy/Shopify listings — into a shareable gallery of buyable items: keycaps, gear, furniture, fashion,
+plants, decor, and so on.
 
-Each top-level directory is a skill — a `SKILL.md` (with YAML frontmatter: `name`, `description`)
-plus an optional `references/` folder of deep-dive docs. Skills are **symlinked** into
-`~/.claude/skills/`, so the live skill Claude Code loads and the copy tracked here are the same
-files. Edit in either place; commit here.
+See [`SKILL.md`](SKILL.md) for the pipeline (clarify → discover → source/verify → curate →
+build/ship), the curation discipline, and the **Think outside the box** section. Deep-dives live in
+[`references/`](references/):
 
-## Skills
+- [`references/browser-sourcing.md`](references/browser-sourcing.md) — driving the Chrome extension,
+  DataDome warm-up, JSON-LD + Shopify `.js` extraction, on-site search scraping, image handling.
+- [`references/build-and-ship.md`](references/build-and-ship.md) — the self-contained page template,
+  the compatibility-lens recipe, OG image generation, GitHub Pages deploy, and the public-repo
+  guardrail.
 
-### shopping-lookbook
-Curate real, in-stock products into a themed visual "lookbook" web page: browse live listings,
-verify each one, and ship a self-contained GitHub Pages site with prices, specs, and buy buttons.
+## Install
 
-- `SKILL.md` — the pipeline (clarify → discover → source/verify → curate → build/ship), curation
-  discipline, and a **Think outside the box** section (reframe binary constraints, expand to
-  adjacent communities, grade against the user's real hardware, build a compatibility *lens*).
-- `references/browser-sourcing.md` — driving the Chrome extension, DataDome warm-up, JSON-LD +
-  Shopify `.js` extraction, on-site search scraping, image handling.
-- `references/build-and-ship.md` — the self-contained page template, the compatibility-lens
-  recipe, OG image generation, GitHub Pages deploy, and the public-repo guardrail.
-
-## Linking a skill into Claude Code
+Clone into your Claude Code skills directory:
 
 ```sh
-ln -s "$PWD/shopping-lookbook" ~/.claude/skills/shopping-lookbook
+git clone git@github.com:DrewHoo/shopping-lookbook.git ~/.claude/skills/shopping-lookbook
 ```
-
-New machine / fresh clone: clone this repo, then symlink each skill directory into
-`~/.claude/skills/`.
