@@ -28,7 +28,12 @@ This is a **research + authoring** task, not a code task. The hard part is *sour
    down — they are the filter you defend against all turn.
 2. **Discover** candidate listings (broad). Fan out web searches per bucket to build a candidate
    URL pool. A parallel multi-query workflow is ideal here (one agent per query cluster → deduped
-   pool). This does **not** need the browser.
+   pool). Don't stop at search — **mine YouTube video descriptions.** Haul, review, "what's on my
+   desk", setup-tour, and roundup videos routinely list every product shown, with direct buy links
+   in the description's "links"/"shop"/"gear" section. Those URLs are creator-vetted, jump straight
+   to the real product page, and regularly surface listings that keyword search misses. Search
+   YouTube for the theme, open the promising videos, and pull the description links into the pool.
+   This does **not** need the browser (the description text is enough to harvest URLs).
 3. **Source & verify** each candidate in a real browser (this is the bottleneck — see
    `references/browser-sourcing.md`). Confirm: live (not dead/sold-out), meets every hard rule,
    genuinely on-theme (look at the photos), then capture title, shop, price+currency, specs,
@@ -78,9 +83,11 @@ Headline rules (details in the reference):
   (e.g. "the aesthetic lives in a material/profile the rules exclude") and surface the best
   out-of-spec options as a labelled near-miss row. The user explicitly values this over padding.
 - **Widen the net — sources *and* communities.** If one source is thin, go to specialist retailers
-  (Shopify stores, category sites), other marketplaces (eBay, Amazon), and the vendors of *adjacent
-  communities* with the same underlying need (see **Think outside the box**). Make cards
-  source-aware (the buy button says where each item lives).
+  (Shopify stores, category sites), other marketplaces (eBay, Amazon), the **link/description
+  sections of YouTube videos** on the theme (hauls, reviews, roundups — creators list and link
+  every product they show), and the vendors of *adjacent communities* with the same underlying need
+  (see **Think outside the box**). Make cards source-aware (the buy button says where each item
+  lives).
 
 ## Think outside the box
 
