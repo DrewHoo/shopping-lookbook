@@ -16,6 +16,8 @@ build/ship), the curation discipline, and the **Think outside the box** section.
   the compatibility-lens recipe, OG image generation, GitHub Pages deploy, and the public-repo
   guardrail.
 
+See [https://drewhoover.com/keycap-lookbook/](https://drewhoover.com/keycap-lookbook/) for an example lookbook (original repo here [https://github.com/DrewHoo/keycap-lookbook](https://github.com/DrewHoo/keycap-lookbook))
+
 ## Install
 
 Clone into your Claude Code skills directory:
