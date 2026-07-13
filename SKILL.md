@@ -21,6 +21,12 @@ prominent link to buy. The deliverable is a self-contained static site deployed 
 This is a **research + authoring** task, not a code task. The hard part is *sourcing real data*
 (most storefronts fight scrapers) and *honest curation* (don't pad the list). The build is easy.
 
+**Prerequisite — a browser MCP server.** Sourcing happens in a real browser; without one the skill
+cannot verify listings. This skill was built against the
+[Claude in Chrome extension](https://claude.com/claude-for-chrome) (the `claude-in-chrome` MCP).
+If no browser MCP is connected when sourcing begins, stop and ask the user to install and connect
+one — don't substitute WebFetch.
+
 ## The pipeline
 
 1. **Clarify the brief.** What is being shopped for, which aesthetics/buckets, and the hard

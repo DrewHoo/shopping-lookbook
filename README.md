@@ -25,3 +25,9 @@ Clone into your Claude Code skills directory:
 ```sh
 git clone git@github.com:DrewHoo/shopping-lookbook.git ~/.claude/skills/shopping-lookbook
 ```
+
+**Prerequisite: a browser MCP server.** The sourcing phase drives a real browser — most storefronts
+403 plain HTTP fetches. This skill was built against the
+[Claude in Chrome extension](https://claude.com/claude-for-chrome) (the `claude-in-chrome` MCP);
+any browser MCP server your agent can drive should work, but install and connect one before running
+the skill.
