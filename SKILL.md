@@ -56,6 +56,14 @@ one — don't substitute WebFetch.
    to the real product page, and regularly surface listings that keyword search misses. Search
    YouTube for the theme, open the promising videos, and pull the description links into the pool.
    This does **not** need the browser (the description text is enough to harvest URLs).
+   Two discovery rules that pay for themselves: **search both vocabulary registers** — fan/consumer
+   language ("Crimson Tide hat") *and* institutional/historical language ("University of Alabama",
+   city names, sponsor companies); heritage and vintage vendors index under the formal register and
+   are invisible to fan-vocabulary queries. And **sweep proven sources across every bucket**: when a
+   source over-performs in one bucket, run its whole catalog against all the other buckets' rules
+   (one paginated `products.json` fetch on Shopify) before hunting new sources — the user finding a
+   "why didn't you show me these?" item on a store you already used is the most avoidable miss
+   there is.
 3. **Source & verify** each candidate in a real browser (this is the bottleneck — see
    `references/browser-sourcing.md`). Confirm: live (not dead/sold-out), meets every hard rule,
    genuinely on-theme (look at the photos), then capture title, shop, price+currency, specs,

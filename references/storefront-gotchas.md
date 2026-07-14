@@ -58,6 +58,25 @@ const col = await fetch('https://<store>/collections/<handle>/products.json?limi
 - Options live in `j.options` (`Size`, `Color`, `Artwork`, …) — the real material/profile/blank
   choice is here, not in the title.
 
+## Full-catalog sweeps beat on-site search (and the vendor's own search API)
+
+A vendor's search can hide its own inventory: Ebbets' `search/suggest.json?q=alabama` returned
+**zero results** while two in-stock "University of Alabama" caps sat in the catalog. Don't trust
+one query — for any Shopify vendor worth mining, **sweep the whole catalog** and filter locally
+with a synonym regex covering *both vocabulary registers* (fan terms AND formal/city/sponsor names):
+
+```js
+let hits=[];for(let page=1;page<=6;page++){
+  const j=await fetch('/products.json?limit=250&page='+page).then(r=>r.ok?r.json():null);
+  if(!j||!j.products.length)break;
+  j.products.forEach(p=>{ if(/alabama|birmingham|tuscaloosa/i.test(p.title)) hits.push(/*…*/); });
+  if(j.products.length<250)break;}
+```
+
+~1,400 products scan in seconds, with per-variant stock in the same payload. Run this sweep on
+**every source that over-performed in another bucket** (the source-×-bucket cross-join) — it's the
+cheapest discovery move in the whole pipeline and the most commonly skipped.
+
 ## Salesforce Commerce (Patagonia & many outdoor/apparel brands) — the image trap
 
 - Product URL `/product/<slug>/<id>.html`; on-site search `/search/?q=<terms>`. Read **JSON-LD** for
