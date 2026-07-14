@@ -38,7 +38,10 @@ one — don't substitute WebFetch.
    - **Tensions recon just surfaced:** "the brand you named tops out at [spec], under your
      requirement — show borderline items flagged, or cut them?"
    - **Exemplar scope:** is the linked example the product, the maker, or the *genre* — and
-     what else counts as the genre?
+     what else counts? Ask with props, not abstractions: decompose the exemplar's *mechanism*
+     (what makes it what it is, minus its specific content), climb the abstraction ladder, and
+     offer one concrete item per rung ("does a fictional-company hat count? a loud novelty
+     trucker hat?"). Recipe in `references/discovery-workflow.md` (exemplar → genre induction).
    - **Negative-rule scope:** does "nothing like X" ban a surface attribute (any red at all) or
      a construction (bright red + curved brim + block text)?
    - **Lived-experience absolutes:** "has [the category the collection depends on] ever actually

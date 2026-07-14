@@ -6,6 +6,43 @@ synthesis pass turns ~15 minutes of sequential searching into one fan-out. This 
 shape for phase 2 of the pipeline. **Sourcing/verification (phase 3) stays serial and yours** — a
 single browser is a shared resource; parallel agents would collide in it.
 
+## From one exemplar to a genre (induction ladder)
+
+A brief often defines a bucket by a single exemplar — "hats like the Solvem Probler hat." Before
+you can expand terms you have to induce what category that item *is*, and searching the
+exemplar's surface features is the failure mode ("latin text hats" finds nothing the user wants).
+
+**1. Decompose the mechanism, not the surface.** Ask: *what makes this item what it is, if you
+strip away its specific content?* Solvem Probler = a joke (spoonerism/wordplay) presented
+completely deadpan on an otherwise normal, well-made cap — fake authority played straight. The
+Latin-ish words are surface; "deadpan joke played straight" is the mechanism. The mechanism is
+the genre.
+
+**2. Climb the abstraction ladder** and write down a rung-by-rung definition:
+- **L0 — the item itself**: this product, this maker's other products.
+- **L1 — same mechanism, new content**: other wordplay/mock-Latin hats.
+- **L2 — sibling mechanisms, same effect**: fictional companies (Weyland-Yutani, Aperture),
+  fake institutions, defunct absurd teams (Sioux City Ghosts), anti-slogans ("SPORTS").
+- **L3 — the umbrella vibe**: irreverent/deadpan novelty. Terms up here get noisy — everything
+  from L3 must pass the substitution test below.
+
+**3. Let the market name the genre — recommender surfaces are free embeddings.** Commerce sites
+have already clustered every product by human behavior; query the clusters instead of building
+vectors: search the exemplar by name and read the maker's own collection/tag names; open its
+listing's "customers also bought" / related-items rail; find Etsy lists, Pinterest boards, and
+Reddit threads ("where do I get hats like X") that contain the exemplar — a human-curated list
+containing your exemplar is a genre definition written by someone who shares the user's taste.
+Mine roundup articles and YouTube videos titled "hats like X" / "funny dad hats" the same way.
+Harvest both **items** (straight into the candidate pool) and **category words** (into the term
+matrix's genre-siblings axis).
+
+**4. Probe the boundary with the user, one concrete item per rung.** The intake question
+"is the exemplar the product, the maker, or the genre?" lands far better with props: "does a
+fictional-company hat (Weyland-Yutani) count? does a loud novelty trucker hat count?" One item
+per boundary calibrates the whole axis (same trick as the recuration round's boundary-item
+probe, moved up front). The rungs the user accepts become the bucket definition; their
+mechanism words seed the intent sentence and term matrix below.
+
 ## Build a term matrix first (lateral query expansion)
 
 The cheapest way to lose a bucket is to search only its *label*. One run searched "Solvem
