@@ -21,11 +21,13 @@ prominent link to buy. The deliverable is a self-contained static site deployed 
 This is a **research + authoring** task, not a code task. The hard part is *sourcing real data*
 (most storefronts fight scrapers) and *honest curation* (don't pad the list). The build is easy.
 
-**Prerequisite — a browser MCP server.** Sourcing happens in a real browser; without one the skill
-cannot verify listings. This skill was built against the
-[Claude in Chrome extension](https://claude.com/claude-for-chrome) (the `claude-in-chrome` MCP).
-If no browser MCP is connected when sourcing begins, stop and ask the user to install and connect
-one — don't substitute WebFetch.
+**Prerequisite — a browser MCP with JS execution.** Sourcing happens in a real browser; without
+one the skill cannot verify listings. Any browser MCP that can navigate and execute page
+JavaScript works: this skill was built against the
+[Claude in Chrome extension](https://claude.com/claude-for-chrome) (`claude-in-chrome`), and the
+in-app Claude Browser (`mcp__Claude_Browser__*`) has since run a full expansion round solo —
+cross-origin Shopify `fetch()` works from any tab there too. If neither is available when
+sourcing begins, stop and ask the user to connect one — don't substitute WebFetch.
 
 ## The pipeline
 

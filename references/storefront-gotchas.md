@@ -77,6 +77,25 @@ let hits=[];for(let page=1;page<=6;page++){
 **every source that over-performed in another bucket** (the source-×-bucket cross-join) — it's the
 cheapest discovery move in the whole pipeline and the most commonly skipped.
 
+## Platform families & licensed-goods channels
+
+- **A network of sibling stores shares one platform — verify N stores for the price of one.**
+  Every MiLB team store is `<team>.milbstore.com`, all Shopify: seven teams' size-specific stock
+  verified in one batched fetch loop. When any team/campus/franchise store appears, assume the
+  whole network is sweepable with the same endpoint trick. (Campus stores are the counterexample:
+  `shop.<school>.com` is usually Fanatics — 403s fetchers, JS-walled search, size buttons that
+  render enabled while the cart says Out of Stock. Click a size and read the add-to-cart button's
+  `disabled` state; the button grid alone lies.)
+- **Sold-out in one channel is NOT a verdict for licensed goods.** The same SKU lives at the
+  maker's own site, Fanatics, the team/campus store, and retailers (Lids, fittedhats.com) — one
+  run found a cap dead at Fanatics and absent from the team store but fully stocked in the
+  maker's own `/collections/<team>/products.json`. Triangulate the maker's collection endpoint
+  before benching a finalist.
+- **Per-variant sale prices:** `.js` `price` is the cheapest variant and `products.json`
+  `variants[0].price` is arbitrary — on sale items these can both differ from the price of the
+  buyer's size. Read `v.price` on the exact variant you'd order ($41 "cheapest" masked a $68
+  size-8 in one run).
+
 ## Salesforce Commerce (Patagonia & many outdoor/apparel brands) — the image trap
 
 - Product URL `/product/<slug>/<id>.html`; on-site search `/search/?q=<terms>`. Read **JSON-LD** for
@@ -170,3 +189,9 @@ redirects to a different ASIN (color variant); take the resolved `/dp/<ASIN>` as
   need `dangerouslyDisableSandbox: true`.
 - **`cd` inside a compound Bash command doesn't reliably persist** and the shell cwd can reset between
   calls — `cd <repo> && git …` in the *same* command, or pass absolute paths.
+- **In-app Browser pane: screenshots go solid black at deep scroll offsets** even while the page is
+  fine (capture works near scrollY 0). Don't burn turns rescreenshotting — verify at depth with DOM
+  reads (`elementFromPoint`, `img.complete && naturalWidth>0` on elements whose bounding rect is
+  in-viewport), and take your eyeball screenshots at the top of the page. The image-grid trick
+  composes with this: rewrite a scratch tab's body to a labeled `<img>` grid of every finalist image
+  at scrollY 0 — one screenshot eyeballs all candidates AND hotlink-tests every CDN at once.
