@@ -33,8 +33,10 @@ one — don't substitute WebFetch.
    inclusion rules (material, size, profile, price ceiling, in-stock-only, etc.). Write the rules
    down — they are the filter you defend against all turn.
 2. **Discover** candidate listings (broad). Fan out web searches per bucket to build a candidate
-   URL pool. A parallel multi-query workflow is ideal here (one agent per query cluster → deduped
-   pool). Don't stop at search — **mine YouTube video descriptions.** Haul, review, "what's on my
+   URL pool. A parallel multi-query `Workflow` is ideal here (one searcher per bucket + a
+   spec-authority agent + a synthesis pass → deduped pool); the recipe, schema, and prompt template
+   are in **`references/discovery-workflow.md`**. Don't stop at search — **mine YouTube video
+   descriptions.** Haul, review, "what's on my
    desk", setup-tour, and roundup videos routinely list every product shown, with direct buy links
    in the description's "links"/"shop"/"gear" section. Those URLs are creator-vetted, jump straight
    to the real product page, and regularly surface listings that keyword search misses. Search
@@ -58,9 +60,17 @@ and search-result snippets lack images, live prices, and stock. So you drive a *
 via the Chrome extension (`claude-in-chrome` MCP) and read the DOM / structured data directly.
 The full playbook — bot-wall warm-up, JSON-LD extraction, the Shopify `.js` shortcut, on-site
 search scraping, the extension's output guard, image handling, dead-listing detection, batching —
-is in **`references/browser-sourcing.md`**. Read it before you start sourcing.
+is in **`references/browser-sourcing.md`**. Platform-specific shortcuts, the **fast path** (most
+storefronts are Shopify — qualify dozens of candidates with zero navigation), the CDN-hotlink
+cheat-sheet, and the traps that quietly cost turns are in **`references/storefront-gotchas.md`**.
+Read both before you start sourcing.
 
 Headline rules (details in the reference):
+
+- **Fast path first: is it Shopify?** If the product URL has `/products/` or `/collections/`, skip
+  navigating. A cross-origin `fetch()` of `/collections/<h>/products.json?limit=250` (all products +
+  variants) and `/products/<h>.js` (one clean product) lets you filter by size/variant/stock and grab
+  prices+images in one call. This is the single biggest speed/token win — see `storefront-gotchas.md`.
 
 - **Check the browser is connected** (`list_connected_browsers`) before anything. If not, ask the
   user to connect the Chrome extension — don't fall back to WebFetch for product pages.
@@ -75,8 +85,10 @@ Headline rules (details in the reference):
 - **The extension blocks cookie/query-string data in script results.** Strip `?…` from every URL,
   never return `location.href`, rebuild canonical URLs — or you get `[BLOCKED]`.
 - **Look at the photos.** You cannot judge "on-theme" from text. Screenshot ambiguous items.
-- **Verify links resolve and images load** (title isn't the "unavailable" page; `naturalWidth>0`)
-  before an item earns a card. Drop anything dead.
+- **Verify links resolve and images load** before an item earns a card — but test each image with a
+  fresh `new Image()` loader, **not** a bulk `naturalWidth` sweep (which false-negatives on
+  lazy-loaded images after a scroll). Trust the **rendered page** for stock, not JSON-LD. Drop
+  anything dead. See `storefront-gotchas.md`.
 
 ## Curation discipline
 
