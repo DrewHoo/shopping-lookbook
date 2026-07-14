@@ -6,6 +6,58 @@ synthesis pass turns ~15 minutes of sequential searching into one fan-out. This 
 shape for phase 2 of the pipeline. **Sourcing/verification (phase 3) stays serial and yours** — a
 single browser is a shared resource; parallel agents would collide in it.
 
+## Build a term matrix first (lateral query expansion)
+
+The cheapest way to lose a bucket is to search only its *label*. One run searched "Solvem
+Probler" for an irreverent bucket and "crimson tide" for an Alabama bucket — and missed a vendor
+whose entire catalog indexes under "University of Alabama". Search engines solve this with
+*query expansion*; run the model-native version as an explicit step, per bucket, BEFORE writing
+searcher prompts.
+
+Why not embeddings: nearest-neighbor terms measure *association*, not *intent*. "Mississippi" is
+a close embedding neighbor of "Alabama" (co-occurrence: Deep South, SEC) and is exactly what the
+user doesn't want. You — the model — are a stronger semantic expander than a cosine lookup, but
+only when expansion runs as a deliberate generate-then-prune step instead of trusting the first
+phrase in the brief.
+
+**1. Anchor the intent in one sentence.** Not the bucket label — the *want*. "Hats that signal
+Alabama Crimson Tide fandom." "Hats whose joke is the point." Every expansion and every prune
+decision refers back to this sentence.
+
+**2. Generate 8–15 candidate terms along four axes** (a checklist, so you don't free-associate):
+
+- **Register variants** — fan/colloquial ↔ official/institutional ↔ historical/geographic:
+  "Crimson Tide" / "Bama" / "Roll Tide" ↔ "University of Alabama" / "UA" ↔ "Tuscaloosa".
+  Heritage and vintage vendors index under the formal register and are invisible to fan
+  vocabulary.
+- **Metonyms & iconography** — mascot, motif, color, chant, famous artifact: "Big Al",
+  "houndstooth", "script A", "elephant". These surface on-theme items that never say the
+  team's name at all.
+- **Genre siblings** — for vibe buckets, the user's exemplar is a *genre*; name its neighbor
+  labels: irreverent → "funny", "ironic", "parody", "novelty", "absurdist", "fake company",
+  "joke hat". One exemplar phrase ("Solvem Probler") is a fingerprint, not a search strategy.
+- **Vendor category vocabulary** — the words *stores* put in titles/tags/collections: "dad
+  hat", "collegiate", "vintage ballcap", "defunct team". On-site search matches vendor words,
+  not yours.
+
+**3. Prune with the substitution test (the "Mississippi test").** For each candidate term ask:
+*if a product matched ONLY this term and nothing else in the bucket, would the user still want
+it?* "Houndstooth" passes — a houndstooth cap with no Alabama text is still on-intent.
+"Mississippi" fails. "SEC" fails (surfaces Auburn). "College football" fails. Drop every term
+that fails, no matter how *related* it feels — this gate is what turns recall expansion into
+precision-safe expansion.
+
+**4. Feed vendor vocabulary back after first contact.** When a search hits, read the winning
+products' own titles/tags/collection handles (free in Shopify `products.json`) and add new terms
+to the matrix — this catches registers you couldn't have guessed ("Question Marks" as a team
+name). Remember a vendor's own search API often can't find its inventory (Ebbets returns zero
+results for "alabama"); the term matrix crossed with a full catalog sweep is what actually
+covers a source.
+
+The output is a small **bucket × terms matrix**. Paste each bucket's term list into its
+searcher's prompt with the instruction "run every term, not just the bucket name" — and keep
+the matrix around: the recuration round extends it rather than starting over.
+
 ## Shape
 
 ```
@@ -21,6 +73,9 @@ without parsing.
 
 ## What made the prompts good (steal these)
 
+- **Hand each searcher its bucket's term list from the matrix** (see above), with an explicit
+  "search every term, not just the bucket name." A searcher given only a bucket label reverts to
+  searching the label.
 - **One shared `COMMON` constraints block, pasted into every searcher.** The buyer's hard rules
   (size, material, brand exclusions, price ceiling, style) stated once, identically, so no searcher
   drifts. Restate the *why* ("one-size has never fit this buyer") — it changes what they rank.

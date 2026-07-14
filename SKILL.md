@@ -56,10 +56,14 @@ one — don't substitute WebFetch.
    to the real product page, and regularly surface listings that keyword search misses. Search
    YouTube for the theme, open the promising videos, and pull the description links into the pool.
    This does **not** need the browser (the description text is enough to harvest URLs).
-   Two discovery rules that pay for themselves: **search both vocabulary registers** — fan/consumer
-   language ("Crimson Tide hat") *and* institutional/historical language ("University of Alabama",
-   city names, sponsor companies); heritage and vintage vendors index under the formal register and
-   are invisible to fan-vocabulary queries. And **sweep proven sources across every bucket**: when a
+   Two discovery rules that pay for themselves: **expand every bucket into a term matrix before
+   searching** — never search only the bucket's label or the user's exemplar phrase. Generate terms
+   along four axes (register variants: "Crimson Tide" vs "University of Alabama"; metonyms and
+   iconography: "houndstooth", "Big Al"; genre siblings: irreverent → "funny", "parody", "novelty";
+   vendor category vocabulary: "dad hat", "collegiate"), then prune with the substitution test —
+   *would the user want an item matching ONLY this term?* ("Mississippi" is related to Alabama and
+   fails; "houndstooth" passes). Full recipe in `references/discovery-workflow.md`. And **sweep
+   proven sources across every bucket**: when a
    source over-performs in one bucket, run its whole catalog against all the other buckets' rules
    (one paginated `products.json` fetch on Shopify) before hunting new sources — the user finding a
    "why didn't you show me these?" item on a store you already used is the most avoidable miss
