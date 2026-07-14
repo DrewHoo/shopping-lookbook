@@ -26,6 +26,21 @@ the genre.
 - **L3 — the umbrella vibe**: irreverent/deadpan novelty. Terms up here get noisy — everything
   from L3 must pass the substitution test below.
 
+**The payoff concentrates at L2.** L0/L1 mostly re-find what the user already showed you; L3 is
+where "Mississippi" lives. The genuinely new veins come from sibling mechanisms — in one run,
+both headline finds (minor-league absurdist teams on true fitteds; a sized fictional-company
+cap) were L2 rungs. Spend your search budget there.
+
+**The regulation-gear reframe (when a hard spec fights the vibe).** If the brief's hard rule
+(a size, a material, a certification) keeps failing against the vibe's usual products, ask:
+*where is this vibe worn professionally or officially?* Regulation gear meets specs by
+definition — novelty products cut corners on them. Canonical case: "funny hat in a real size 8"
+kept failing on one-size novelty blanks until the ladder reached absurdly-named REAL minor-league
+teams — whose caps are on-field New Era fitteds in full size runs, deadpan-official AND
+spec-compliant. The mechanism test applies to products too, not just terms: a proven vendor's
+new arrivals can be on-brand for the vendor but off-register for the user (a deadpan-corporate
+buyer doesn't want the same shop's book-tok line).
+
 **3. Let the market name the genre — recommender surfaces are free embeddings.** Commerce sites
 have already clustered every product by human behavior; query the clusters instead of building
 vectors: search the exemplar by name and read the maker's own collection/tag names; open its
