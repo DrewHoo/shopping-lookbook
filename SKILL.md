@@ -31,7 +31,12 @@ one — don't substitute WebFetch.
 
 1. **Clarify the brief.** What is being shopped for, which aesthetics/buckets, and the hard
    inclusion rules (material, size, profile, price ceiling, in-stock-only, etc.). Write the rules
-   down — they are the filter you defend against all turn.
+   down — they are the filter you defend against all turn. Two reading rules: an example product
+   ("like this one") is a **genre exemplar**, not a SKU — decompose what the user likes about it
+   (silhouette, material, the *kind* of joke) and source the whole genre. And a negative rule
+   ("nothing that looks like X") bans a **construction** — the specific combination that produces
+   the look — not a surface attribute; over-applying it quietly starves a bucket, and the user will
+   notice.
 2. **Discover** candidate listings (broad). Fan out web searches per bucket to build a candidate
    URL pool. A parallel multi-query `Workflow` is ideal here (one searcher per bucket + a
    spec-authority agent + a synthesis pass → deduped pool); the recipe, schema, and prompt template
@@ -100,6 +105,13 @@ Headline rules (details in the reference):
 - **Report shortfalls honestly.** If a bucket only yields N < target strong matches, say why
   (e.g. "the aesthetic lives in a material/profile the rules exclude") and surface the best
   out-of-spec options as a labelled near-miss row. The user explicitly values this over padding.
+- **Lived-experience rules are hard cuts.** When a rule comes from the user's own experience
+  ("no one-size hat has ever fit me"), items that fail it get **cut**, not flagged — near-miss
+  rows are only for axes the user hasn't ruled absolute. Expect the follow-up "why didn't you cut
+  those?" if you soft-flag a rule they stated as fact.
+- **Keep a watch list.** A perfect item that's out of stock gets neither a card nor silence:
+  name it in the section intro or fix-shelf with a direct restock link ("the genre's one true
+  big-size option — sold out at press time, worth a restock alert").
 - **Widen the net — sources *and* communities.** If one source is thin, go to specialist retailers
   (Shopify stores, category sites), other marketplaces (eBay, Amazon), the **link/description
   sections of YouTube videos** on the theme (hauls, reviews, roundups — creators list and link
@@ -136,6 +148,26 @@ they want more than a checkbox.
 - **Read the user's cues.** If a solution feels like a checkbox — or the user says it feels binary
   or timid — that's the signal to draw outside the lines. Ask "what would make this genuinely useful
   or delightful?" and build *that*, not the minimum.
+
+## The recuration round
+
+Ship, then expect a second pass — **the first version is how the user discovers what their rules
+actually are.** In practice the feedback splits three ways, often in one message: some constraints
+*harden* ("why didn't you cut the ones that don't fit?" → cut them, don't re-flag them), some
+*loosen* ("you're being too strict about X" → recalibrate and backfill the bucket), and example
+items reveal themselves as genres ("I meant hats *like* that" → mine the category you anchored
+past). None of this is failure; plan for it:
+
+- **Build so recuration is surgical.** Data as a JS array (a cut is one deleted line), counts and
+  pills computed from the data, per-item fit/verdict tags driving the filters. Before each ship,
+  grep the page for hardcoded numbers — meta/OG descriptions can't be computed and silently drift.
+- **Probe suspect constraints with one boundary item.** If a negative rule feels over-tight,
+  include a single clearly-labelled "full send" item that tests the line (with an honest note on
+  why it might clear the bar). It's the cheapest way to ask the question, and the user's reaction
+  calibrates the whole axis.
+- **Re-run discovery only for the delta.** A recuration is 1–3 new angles, not a fresh brief — the
+  lighter plain-Agent fan-out (see `references/discovery-workflow.md`) plus first-hand browser
+  verification covers it while the page edits proceed in parallel.
 
 ## Build & ship
 

@@ -28,6 +28,7 @@ This alone is the biggest speed/token win in the skill. A category scan that wou
 | `/product/<slug>/<numeric-id>.html`, `demandware.static` in img src | **Salesforce Commerce (SFCC)** | JSON-LD; images are param-locked (below) |
 | `cdn11.bigcommerce.com` in img src, `/products/<name>/` | **BigCommerce** | JSON-LD; swap img size segment |
 | `.html` product pages, `/catalog/` search | **Magento** | JSON-LD; watch stale JSON-LD stock |
+| `/product/<slug>/`, `wp-content/uploads` imgs | **WooCommerce** | JSON-LD Product; `wp-content` images hotlink fine |
 | `i.etsystatic.com`, `/listing/<id>/` | **Etsy** | DataDome warm-up; `il_` size swap |
 | `/dp/<ASIN>`, `m.media-amazon.com` imgs | **Amazon** | Browser-navigate + innerText read (below) |
 
