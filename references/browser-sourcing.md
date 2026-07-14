@@ -88,6 +88,14 @@ JSON.stringify(j?{title:j.title, price:(j.price/100).toFixed(2), available:j.ava
 meta for the headline price). Use top-level `await` (not an async IIFE — the tool returns the
 promise unwrapped only for a trailing awaited expression).
 
+**Scan a whole category in one fetch.** `/collections/<handle>/products.json?limit=250` returns
+every product *with full variants*. Filter client-side by title/tag/variant/size/availability to
+qualify dozens of candidates without a single navigation — e.g. `col.products.filter(...).map(p =>
+({t:p.title, size8:(p.variants.find(v=>v.title==='8')||{}).available}))`. And these Shopify JSON
+endpoints usually serve **permissive CORS**, so the `fetch` works cross-origin from *any* page
+already in the tab (even your own localhost preview). This is the fast path — see
+`storefront-gotchas.md`.
+
 ## 4. On-site search (get live candidates directly)
 
 The most reliable discovery: query the store's **own search** — it only returns active listings.

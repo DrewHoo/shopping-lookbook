@@ -34,6 +34,8 @@ also means no relative asset paths, so GitHub Pages base-path breakage can't hap
     //   ctaLabel = via==='<PrimarySource>' ? 'View on <PrimarySource>' : 'View at '+via;
     // thumbnails swap the main img; clicking main opens the lightbox (#lb).
     // count pills + per-section counts are computed from SETS so they never drift.
+    // hide any filter chip whose tier count is 0 (a recuration can empty a tier).
+    // NOT computable: meta/OG description counts — grep the <head> for stale numbers each ship.
   </script>
 </body></html>
 ```
