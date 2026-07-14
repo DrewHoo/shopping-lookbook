@@ -29,14 +29,23 @@ one — don't substitute WebFetch.
 
 ## The pipeline
 
-1. **Clarify the brief.** What is being shopped for, which aesthetics/buckets, and the hard
-   inclusion rules (material, size, profile, price ceiling, in-stock-only, etc.). Write the rules
-   down — they are the filter you defend against all turn. Two reading rules: an example product
-   ("like this one") is a **genre exemplar**, not a SKU — decompose what the user likes about it
-   (silhouette, material, the *kind* of joke) and source the whole genre. And a negative rule
-   ("nothing that looks like X") bans a **construction** — the specific combination that produces
-   the look — not a surface attribute; over-applying it quietly starves a bucket, and the user will
-   notice.
+1. **Clarify the brief — recon first, ask once.** The brief arrives as vibes plus a few hard
+   rules; the expensive mistakes hide in what the user *didn't* say, and a skill invocation
+   carries a finished-product expectation — every question you fail to ask up front becomes a
+   recuration cycle later. So before sourcing, spend a few minutes on **recon** (pull the gating
+   spec/size charts; check each bucket even exists inside the rules), then ask **one batch of
+   2–4 pointed questions** (AskUserQuestion when available), targeting:
+   - **Tensions recon just surfaced:** "the brand you named tops out at [spec], under your
+     requirement — show borderline items flagged, or cut them?"
+   - **Exemplar scope:** is the linked example the product, the maker, or the *genre* — and
+     what else counts as the genre?
+   - **Negative-rule scope:** does "nothing like X" ban a surface attribute (any red at all) or
+     a construction (bright red + curved brim + block text)?
+   - **Lived-experience absolutes:** "has [the category the collection depends on] ever actually
+     worked for you?" — the answer decides flag-vs-cut for every borderline item.
+   Write the answers down — they are the filter you defend all turn. If you can't ask (headless
+   run, user away), default to: exemplar = genre, negative rule = construction-level, borderline
+   items flagged-not-cut — and say so in the ship note.
 2. **Discover** candidate listings (broad). Fan out web searches per bucket to build a candidate
    URL pool. A parallel multi-query `Workflow` is ideal here (one searcher per bucket + a
    spec-authority agent + a synthesis pass → deduped pool); the recipe, schema, and prompt template
@@ -152,7 +161,8 @@ they want more than a checkbox.
 ## The recuration round
 
 Ship, then expect a second pass — **the first version is how the user discovers what their rules
-actually are.** In practice the feedback splits three ways, often in one message: some constraints
+actually are.** (A sharp intake round — step 1 — shrinks this pass considerably; it rarely
+eliminates it.) In practice the feedback splits three ways, often in one message: some constraints
 *harden* ("why didn't you cut the ones that don't fit?" → cut them, don't re-flag them), some
 *loosen* ("you're being too strict about X" → recalibrate and backfill the bucket), and example
 items reveal themselves as genres ("I meant hats *like* that" → mine the category you anchored
