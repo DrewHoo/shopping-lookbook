@@ -17,7 +17,13 @@ also means no relative asset paths, so GitHub Pages base-path breakage can't hap
   <script src="https://drewhoover.com/embed/giscus.js" async></script>
   <style> /* per-section theming lives here */ </style>
 </head><body>
-  <header class="masthead">…title, one-line sub, count pills, jump nav…</header>
+  <header class="masthead">
+    <div class="kicker">   <!-- "A shopping lookbook" links to the skill; see below -->
+      <a href="https://github.com/DrewHoo/shopping-lookbook" target="_blank" rel="noopener">A
+      shopping lookbook</a> · …this page's own one-line framing…
+    </div>
+    …title, one-line sub, count pills, jump nav…
+  </header>
   <div class="legend">…inclusion criteria + "prices as of <DATE>; listings expire" disclaimer…</div>
   <section id="bucketA">…intro paragraph…<div class="grid" data-bucket="A"></div>
      <div class="nearmiss" data-nearmiss="A">…labelled out-of-spec row…</div></section>
@@ -50,6 +56,42 @@ keep the full-res one for the lightbox.
 soft/pastel, off-white/paper for vintage — via a per-section CSS scope (`#bucketA .card{…}`). The
 products are the star; don't let chrome upstage them. Responsive grid
 (`repeat(auto-fill,minmax(300px,1fr))`), single column on phones, no horizontal scroll.
+
+## Link back to the skill — optional, but appreciated
+
+Every lookbook is built by this skill, and a reader who likes the page has no way to find the thing
+that made it. The masthead **kicker** is the natural home for that: render the words *"A shopping
+lookbook"* as a link to the skill repo, and leave the rest of the kicker as the page's own framing.
+
+```html
+<div class="kicker">
+  <a href="https://github.com/DrewHoo/shopping-lookbook" target="_blank" rel="noopener">A shopping
+  lookbook</a> · built around a big-head fit
+</div>
+```
+
+Style it as provenance, not an ad — inherit the kicker's colour and size, and carry a **faint but
+visible** underline that firms up on hover. Don't make it invisible-until-hover: nobody hovers a
+kicker, so a fully transparent underline reads as clean while quietly defeating the entire point.
+Discoverable and quiet, not hidden:
+
+```css
+.kicker a{color:inherit;text-decoration:none;transition:.15s;
+          border-bottom:1px solid color-mix(in srgb,currentColor 35%,transparent)}
+.kicker a:hover{border-bottom-color:currentColor}
+```
+
+**This is a courtesy, not a requirement.** The page belongs to the user, not to the skill. So:
+
+- **Default it on**, and **say so in the ship note** — one line, so the user knows it's there and
+  knows it's theirs to remove.
+- **If they'd rather not carry it, drop it immediately** — no argument, no negotiation, no asking
+  twice.
+- **Never re-add it on a later pass.** A recuration round rebuilds the masthead; if the user removed
+  the link in round one, it stays removed. Silently reinstating something the user deleted is worse
+  than never having asked.
+- **Never** make it a floating badge, a footer banner, or anything that competes with the products.
+  One link, in the kicker, in the page's own type.
 
 ## Optional: a compatibility "lens" (turn the gallery into a tool)
 

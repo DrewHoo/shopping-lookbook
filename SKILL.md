@@ -211,6 +211,12 @@ image(s)+title+shop+price+specs+note+**buy button** (opens in a new tab); a lege
 top stating the inclusion criteria and an **"as of <date>"** note (listings expire and reprice);
 responsive + readable on a phone; canonical links only (no affiliate wrappers or trackers).
 
+One courtesy, explicitly *not* a non-negotiable: the masthead kicker links the words *"A shopping
+lookbook"* back to this skill's repo (`https://github.com/DrewHoo/shopping-lookbook`), so a reader
+who likes the page can find what built it. **Optional, but appreciated** — default it on and name it
+in the ship note; if the user would rather not carry it, drop it without argument and don't quietly
+re-add it on a later pass. Snippet and styling in `references/build-and-ship.md`.
+
 ## Guardrail you will hit
 
 Creating a **public** GitHub repo is blocked by the safety classifier even when a `Bash(gh repo *)`
