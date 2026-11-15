@@ -12,9 +12,11 @@ also means no relative asset paths, so GitHub Pages base-path breakage can't hap
   <title>…</title><meta name="description" content="…">
   <link rel="icon" href="data:image/svg+xml,%3Csvg…%3E">   <!-- inline emoji/SVG favicon, no file -->
   <!-- OG/Twitter tags → og.png (see below) -->
-  <!-- personal-site chrome (optional): back-bar + comments -->
+  <!-- personal-site chrome (optional): back-bar + comments + analytics. Keep all three:
+       a page deployed without analytics.js reports nothing, and nothing looks wrong. -->
   <script src="https://drewhoover.com/embed/back-bar.js" async></script>
   <script src="https://drewhoover.com/embed/giscus.js" async></script>
+  <script src="https://drewhoover.com/embed/analytics.js" async></script>
   <style> /* per-section theming lives here */ </style>
 </head><body>
   <header class="masthead">
