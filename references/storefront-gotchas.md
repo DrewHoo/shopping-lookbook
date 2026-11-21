@@ -185,7 +185,7 @@ redirects to a different ASIN (color variant); take the resolved `/dp/<ASIN>` as
 - **`save_to_disk` on `computer` screenshots/zoom does not land anywhere the Bash tool can read** —
   the browser MCP and the shell run in different environments. Don't use it to get an image into the
   repo; curl-download instead.
-- **The Bash tool is sandboxed with no network by default.** `curl`, `npm i`, `gh`, and `git push`
+- **The Bash tool is sandboxed with no network by default.** `curl`, `pnpm add`, `gh`, and `git push`
   need `dangerouslyDisableSandbox: true`.
 - **`cd` inside a compound Bash command doesn't reliably persist** and the shell cwd can reset between
   calls — `cd <repo> && git …` in the *same* command, or pass absolute paths.

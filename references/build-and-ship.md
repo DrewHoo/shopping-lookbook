@@ -132,7 +132,7 @@ const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">â
 await sharp(Buffer.from(svg)).png().toFile(process.argv[2] || 'og.png');
 ```
 
-Run it from a scratch dir (`npm i sharp`) writing into the repo; verify by opening the PNG.
+Run it from a scratch dir (`pnpm add sharp`) writing into the repo; verify by opening the PNG.
 
 ## Deploy to GitHub Pages (static, Actions)
 

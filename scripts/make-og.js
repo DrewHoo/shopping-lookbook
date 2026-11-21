@@ -9,7 +9,7 @@
 //   1) Pick 2-4 representative product images (one per bucket reads best). Download them locally
 //      (curl the CDN URLs — Shopify/Etsy/BigCommerce/Backcountry all curl fine; SFCC/Patagonia
 //      images 404 via curl, so source those from a retailer CDN — see storefront-gotchas.md).
-//   2) From a scratch dir:  npm i sharp
+//   2) From a scratch dir:  pnpm add sharp
 //   3) node make-og.js       (writes og.png into OUT_PATH)
 //   4) Open og.png to eyeball it; COMMIT the PNG so CI stays a dependency-free static upload.
 //
