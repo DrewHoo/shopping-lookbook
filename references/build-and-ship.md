@@ -177,6 +177,32 @@ curl -s -o /dev/null -w '%{http_code}' https://<owner-site>/<repo>/og.png       
 For sibling sites under `drewhoover.com`: any public repo under the `DrewHoo` user auto-serves at
 `drewhoover.com/<repo>/` — no per-project DNS. Repo name = URL path.
 
+## List it on the owner's lookbook index
+
+A lookbook is shipped when the owner's index of lookbooks links to it. Add the entry in the same
+pass as the deploy, once the live page returns 200. An owner with no such index gets one line in
+the ship note saying nothing indexes the page.
+
+For `drewhoover.com` the index is the "shopping lookbooks" tab of the favorites page,
+`https://drewhoover.com/favorites/#lookbooks`. It lives in the index-site repo
+`DrewHoo/DrewHoo.github.io` (usually cloned at `~/Projects/DrewHoo.github.io`), in
+`src/pages/favorites.astro` under `#panel-lookbooks`:
+
+1. **Pull first.** The clone is often behind `origin/main`.
+2. **Thumbnail.** Convert the lookbook's `og.png` to
+   `public/images/favorites/lookbooks/<repo>.webp` at 1200×630. A lookbook with no `og.png` gets a
+   1200×630 screenshot of the top of its page.
+3. **Entry.** Copy the newest `.entry` block and put the new one first; the tab runs newest first.
+   Fill in the link, a short plain title, the `<time>` with the ship date, and the thumbnail path.
+4. **Note.** The paragraph under the thumbnail is the owner's first-person note on why they wanted
+   the thing. Build it from their own words in the brief, keeping their phrasing and their reasons,
+   and quote it in the ship note so they can rewrite it.
+5. **Commit only those two files and push `main`.** The clone holds the owner's uncommitted
+   drafts; stage the page and the thumbnail by path. The push deploys the site.
+6. **Verify.** The live tab lists the lookbook first and its thumbnail loads.
+
+The sitemap is built from this tab's links, so the entry is also what gets a lookbook crawled.
+
 ## The publishing guardrail (important)
 
 You **cannot** create the public repo yourself: the auto-mode safety classifier blocks

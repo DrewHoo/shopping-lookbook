@@ -79,8 +79,10 @@ sourcing begins, stop and ask the user to connect one — don't substitute WebFe
    variant/stock, canonical URL, and 1–3 CDN image URLs.
 4. **Curate.** Rank, dedupe, and cut. If a bucket is thin, say so and add a clearly-labelled
    "near-miss" row — never pad the main grid. Quality over count.
-5. **Build & ship.** Bake the verified data into a themed card page and deploy to GitHub Pages.
-   See `references/build-and-ship.md`.
+5. **Build & ship.** Bake the verified data into a themed card page, deploy to GitHub Pages, and
+   list the lookbook on the owner's lookbook index (for drewhoover.com,
+   `https://drewhoover.com/favorites/#lookbooks`). Shipped means the live page returns 200 **and**
+   the index links to it. See `references/build-and-ship.md`.
 
 Run phases 2/3 with a task list; the browser work spans many turns.
 
@@ -202,8 +204,8 @@ A lookbook is static content with light interactivity — **no framework needed*
 self-contained `index.html` (inline CSS/JS, data as a JS array, images hot-linked from the source
 CDNs), deployed to GitHub Pages via an Actions workflow that uploads the repo root. Because there
 are no bundled/relative assets, you sidestep base-path breakage entirely. Full templates, the OG
-image recipe, the Pages-enable ordering gotcha, and the public-repo guardrail are in
-**`references/build-and-ship.md`**.
+image recipe, the Pages-enable ordering gotcha, the lookbook-index entry, and the public-repo
+guardrail are in **`references/build-and-ship.md`**.
 
 Non-negotiables for the page: per-section theming that matches each bucket's mood (dark for
 moody, light for soft, paper for vintage) without upstaging the products; a card with
